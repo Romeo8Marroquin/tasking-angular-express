@@ -1,0 +1,28 @@
+name: Deploy Firebase Functions
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend-application/functions/**'
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        working-directory: backend-application/functions
+        run: npm ci
+      - name: Build
+        working-directory: backend-application/functions
+        run: npm run build
+      - name: Deploy Firebase Functions
+        working-directory: backend-application/functions
+        run: npm run deploy
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TASKED_9E074  }}
