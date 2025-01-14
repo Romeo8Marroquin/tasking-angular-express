@@ -18,13 +18,10 @@ jobs:
       - name: Install dependencies
         working-directory: backend-application/functions
         run: npm ci
-      - name: Build
-        working-directory: backend-application/functions
-        run: npm run build
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
       - name: Deploy Firebase Functions
         working-directory: backend-application/functions
         run: npm run deploy
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TASKED_9E074  }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN  }}
