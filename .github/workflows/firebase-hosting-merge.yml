@@ -28,5 +28,6 @@ jobs:
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TASKED_9E074 }}
-          channelId: live
           projectId: tasked-9e074
+          channelId: live
+          entryPoint: frontend-application
