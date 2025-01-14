@@ -21,6 +21,8 @@ jobs:
       - name: Build
         working-directory: backend-application/functions
         run: npm run build
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
       - name: Deploy Firebase Functions
         working-directory: backend-application/functions
         run: npm run deploy
